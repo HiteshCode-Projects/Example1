@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+
+</head>
+<body>
+    <!-- Text Tags -->
+     <h1> Introduction- Myself  </h1>
+     <h2> Introduction- Myself </h2>
+     <h3>Introduction- Myself  </h3>
+     <h4>Introduction- Myself  </h4>
+     <h5>Introduction- Myself  </h5>
+     <h6>Introduction- Myself  </h6>
+
+     <h2>Menu</h2>
+     <h2>Reviews</h2>
+     <h2>Contact</h2>
+
+     <h2>Enjoy on Your Tv</h2>
+     <p>Watch on smart TVs, PlayStation, <br>   Xbox, Chromecast, Apple TV, Blu-ray players and more.</p>
+
+
+     <em>
+     Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.
+     </em>
+    <br>
+     <strong>Netflix</strong>
+    
+
+
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Introduction - ⭐</h2>
+
+    <p>My Name is <strong>John</strong> . <br>  My Skills are : <em>HTML,CSS,Javascript</em>  <br>  
+       Location : <strong>India.🌍</strong>  
+    
+    </p>
+</body>
+</html>
