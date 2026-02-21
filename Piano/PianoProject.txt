@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f4f4;
+        }
+
+        .container{
+            width: 320px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        textarea{
+            width: 100%;
+            height: 80px;
+            padding: 8px;
+        }
+
+        button{
+            margin-top: 10px;
+            padding: 8px;
+            width: 100%;
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:disabled{
+            background: gray;
+        }
+
+        #output{
+            margin-top: 15px;
+            background: #e8ffe8;
+            padding: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Website Feedback</h2>
+
+      <textarea id="feedback" placeholder="Describe your issue or feedback..."></textarea>
+      <p id="count">0 / 150</p>
+
+      <label>Rate Experience</label>
+      <select id="rating">
+        <option value="">Select</option>
+        <option>⭐</option>
+        <option>⭐⭐</option>
+        <option>⭐⭐⭐</option>
+        <option>⭐⭐⭐⭐</option>
+        <option>⭐⭐⭐⭐⭐</option>
+      </select>
+
+       <button id="submit" disabled>Submit</button>
+
+       <div id="output"></div>
+    </div>
+
+    <script>
+        const feedback = document.getElementById("feedback")
+        const count = document.getElementById("count")
+        const submitBtn = document.getElementById("submit")
+        const output = document.getElementById("output")
+        const rating = document.getElementById("rating")
+
+
+        //UPdate Character count
+      feedback.addEventListener("input" , function(){
+        count.textContent = feedback.value.trim().length + "/150"
+
+        //enable button if text entered
+        submitBtn.disabled = feedback.value.trim() === ""
+      })
+
+
+      //Show Rating Selected 
+      rating.addEventListener('change', function(){
+        console.log("Rating  "  , rating.value);
+      })
+
+
+      //Submit Feedback
+      submitBtn.addEventListener('click', function(){
+        output.style.display = "block";
+        output.innerHTML = `
+            <strong>Feedback Submitted!</strong><br>
+            Message: ${feedback.value}<br>
+            Rating : ${rating.value || "Not Given"}
+        `;
+
+        feedback.value = "";
+        count.textContent = "0 / 150";
+        submitBtn.disabled = true
+
+      });
+    </script>
+</body>
+</html>
+
+
+------
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+            font-family: sans-serif;
+        }
+
+        .piano{
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .key{
+            width: 60px;
+            height: 200px;
+            border: 1px solid black;
+            background-color: white;
+            margin: 2px;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 1);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .key:hover{
+            background-color: #f0f0f0;
+        }
+
+        .key:active{
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Piano🎵</h1>
+    <strong>Note:</strong><p>Click or Hover To Play The Piano.</p>
+
+    <div class="piano">
+
+       <div class="key" data-note="C">CAT</div>  
+       <div class="key" data-note="D">D</div>  
+       <div class="key" data-note="E">E</div>  
+       <div class="key" data-note="F">F</div>  
+       <div class="key" data-note="G">G</div>  
+       <div class="key" data-note="A">A</div>  
+       <div class="key" data-note="B">B</div>  
+
+
+    </div>
+
+    <audio id="audio-C" src="./a6-102820.mp3"></audio> 
+    <audio id="audio-D" src="./d6-82020.mp3"></audio>
+    <audio id="audio-E" src="./e6-82016.mp3"></audio>
+    <audio id="audio-F" src="./f6-102819.mp3"></audio>
+    <audio id="audio-G" src="./g6-82013.mp3"></audio>
+    <audio id="audio-A" src="./a6-102820.mp3"></audio>
+    <audio id="audio-B" src="./g6-82013.mp3"></audio>
+
+
+    <script>
+      const keys = document.querySelectorAll(".key")
+     // console.log(keys) - Array
+
+     keys.forEach(function(xyz){
+
+        const note = xyz.getAttribute("data-note")
+
+        const audio = document.getElementById("audio-"+note)
+
+     xyz.addEventListener('click',function(){
+        audio.currentTime = 0;
+        audio.play()
+     })   
+       
+
+
+     })
+    
+
+
+    </script>
+</body>
+</html>

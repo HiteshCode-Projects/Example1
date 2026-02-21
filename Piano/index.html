@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+            font-family: sans-serif;
+        }
+
+        .piano{
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .key{
+            width: 60px;
+            height: 200px;
+            border: 1px solid black;
+            background-color: white;
+            margin: 2px;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 1);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .key:hover{
+            background-color: #f0f0f0;
+        }
+
+        .key:active{
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Piano🎵</h1>
+    <strong>Note:</strong><p>Click or Hover To Play The Piano.</p>
+
+    <div class="piano">
+
+       <div class="key" data-note="C">CAT</div>  
+       <div class="key" data-note="D">D</div>  
+       <div class="key" data-note="E">E</div>  
+       <div class="key" data-note="F">F</div>  
+       <div class="key" data-note="G">G</div>  
+       <div class="key" data-note="A">A</div>  
+       <div class="key" data-note="B">B</div>  
+
+
+    </div>
+
+    <audio id="audio-C" src="./a6-102820.mp3"></audio> 
+    <audio id="audio-D" src="./d6-82020.mp3"></audio>
+    <audio id="audio-E" src="./e6-82016.mp3"></audio>
+    <audio id="audio-F" src="./f6-102819.mp3"></audio>
+    <audio id="audio-G" src="./g6-82013.mp3"></audio>
+    <audio id="audio-A" src="./a6-102820.mp3"></audio>
+    <audio id="audio-B" src="./g6-82013.mp3"></audio>
+
+
+    <script>
+      const keys = document.querySelectorAll(".key")
+     // console.log(keys) - Array
+
+     keys.forEach(function(xyz){
+
+        const note = xyz.getAttribute("data-note")
+
+        const audio = document.getElementById("audio-"+note)
+
+     xyz.addEventListener('click',function(){
+        audio.currentTime = 0;
+        audio.play()
+     })   
+       
+
+
+     })
+    
+
+
+    </script>
+</body>
+</html>

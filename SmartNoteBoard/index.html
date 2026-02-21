@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     body{
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+     }
+
+     .container{
+        background: white;
+        padding: 20px;
+        width: 350px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+     }
+
+     h2{
+        text-align: center;
+     }
+
+     input{
+        width: 70%;
+        padding: 8px;
+     }
+
+     button{
+        padding: 8px;
+        border: none;
+        background: #007bff;
+        color: white;
+        cursor: pointer;
+        border-radius: 50%;
+     }
+
+     button:hover{
+        background: #0056b3;
+     }
+
+     ul{
+        list-style: none;
+        padding: 0;
+     }
+
+     li{
+        background: #e9ecef;
+        padding: 8px;
+        margin-top: 5px;
+        display: flex;
+        justify-content: space-between;
+     }
+
+
+     /* Dark Mode */
+     .dark{
+        background: #121212;
+        color: white;
+     }
+
+     .dark  .container{
+        background: #1e1e1e;
+     }
+
+     .dark li{
+        background: #333;
+     }
+    </style>
+</head>
+<body id="body" class="">
+    <div class="container">
+        <h2>Smart Notes</h2>
+
+        <input type="text" id="noteInput" placeholder="write a note">
+        <button onclick="addNote()">Add</button>
+
+        <p id="message"></p>
+
+        <ul id="notelist">
+           
+        </ul>
+
+        <p>Total Notes: <span id="total">0</span></p>
+
+        <button onclick="toggleMode()">🌙</button>
+    </div>
+
+
+    <script>
+             let notes = []  //Array - To Store Data of Notes
+
+             //Feature - Add Notes
+             function addNote(){
+                //Logic - Get Data from user(Input) and Add in my Ul Tag(List)
+
+               let input = document.getElementById("noteInput");
+               let message = document.getElementById("message")
+
+               let value = input.value;
+
+               if(value === ""){
+                message.innerHTML = "Please write something";
+                return;
+               }
+
+               //ArrayName.push(Value Which I am Adding)
+               notes.push(value)
+               console.log(notes)
+
+               input.value = "";
+               message.innerHTML = ""   
+
+               //Calling the function to display inside my addNote-
+               displayNotes();
+
+             }
+
+             //Function Display - How to display The Value of user in Ul 
+             //Hint - use CreateElement Method of Dom
+             function displayNotes(){
+                let list = document.getElementById("notelist")  //ul Tag
+                let total = document.getElementById("total") // span
+
+
+                list.innerHTML = "";
+
+                //for loop to access the data of array
+                for(let i=0;i < notes.length; i++){
+
+                  //Tag = Element - createElement("TagName")
+                  let li =   document.createElement("li")
+                  li.innerHTML = notes[i]
+
+
+                   list.appendChild(li)
+
+                }
+
+                //Total Count - List Length - Total no of Data
+                total.innerHTML = notes.length
+               
+             }
+
+
+             //Theme Change Task
+             function toggleMode(){
+
+             let body = document.getElementById("body")   //Body tag Selected
+
+             if(body.classList.contains("dark")){
+
+                 body.classList.remove("dark")
+
+             }else{
+                 body.classList.add("dark")
+             }
+
+
+             }
+    </script>
+</body>
+</html>
